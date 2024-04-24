@@ -18,9 +18,10 @@ jobs:
         if: contains(steps.label-PR.outputs.all-labels, 'TEAM1')
         with:
           script: |
+            const teamName = 'idarktagorg/dark-team'
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '@idarktagorg/dark-team team'
+              body: '@${teamName} team'
             })
